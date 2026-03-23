@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>楽っション（Rakussion）｜あなたに合った投資戦略を</title>
+  <meta name="description" content="投資属性診断で、あなたに最適な証券会社・投資スタイルがわかる。新NISA・高配当・FX・不動産まで幅広くカバー。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --gold:        #FFD700;
+      --gold-light:  #FFE866;
+      --gold-dim:    #B8960C;
+      --dark-bg:     #0D0D0D;
+      --dark-card:   #161616;
+      --dark-border: #2A2A2A;
+      --text-main:   #F0F0F0;
+      --text-sub:    #A0A0A0;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: var(--dark-bg);
+      color: var(--text-main);
+      line-height: 1.7;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ─── HEADER ─── */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(13,13,13,.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--dark-border);
+      padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .logo {
+      font-size: 1.4rem; font-weight: 900;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 60%, var(--gold-dim) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      letter-spacing: .05em;
+    }
+    .logo span { font-size: .85rem; font-weight: 400; -webkit-text-fill-color: var(--text-sub); }
+
+    nav.header-nav { display: flex; gap: 24px; font-size: .85rem; }
+    nav.header-nav a { color: var(--text-sub); transition: color .2s; }
+    nav.header-nav a:hover { color: var(--gold); }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative; overflow: hidden;
+      text-align: center;
+      padding: 90px 24px 80px;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, #2a1e00 0%, var(--dark-bg) 70%);
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FFD700' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+      pointer-events: none;
+    }
+    .hero-tag {
+      display: inline-block;
+      border: 1px solid var(--gold-dim);
+      color: var(--gold);
+      font-size: .75rem; letter-spacing: .1em;
+      padding: 4px 14px; border-radius: 999px;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 900; line-height: 1.3;
+      margin-bottom: 16px;
+    }
+    .hero h1 em {
+      font-style: normal;
+      background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      font-size: 1rem; color: var(--text-sub);
+      max-width: 520px; margin: 0 auto 36px;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--gold) 0%, #e6b800 100%);
+      color: #0D0D0D; font-weight: 900;
+      padding: 14px 40px; border-radius: 8px;
+      font-size: 1rem; letter-spacing: .05em;
+      transition: transform .15s, box-shadow .15s;
+      box-shadow: 0 4px 20px rgba(255,215,0,.25);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(255,215,0,.4); }
+
+    /* ─── SECTION WRAPPER ─── */
+    section { padding: 72px 24px; max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: .7rem; letter-spacing: .2em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 8px;
+    }
+    .section-title {
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 900; margin-bottom: 40px;
+    }
+
+    /* ─── CATEGORY NAV 6 ─── */
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 14px;
+    }
+    .cat-card {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 12px;
+      padding: 20px 16px;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color .2s, transform .2s, box-shadow .2s;
+    }
+    .cat-card:hover {
+      border-color: var(--gold-dim);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(255,215,0,.12);
+    }
+    .cat-icon { font-size: 2rem; margin-bottom: 10px; }
+    .cat-name { font-size: .9rem; font-weight: 700; }
+    .cat-desc { font-size: .72rem; color: var(--text-sub); margin-top: 4px; }
+
+    /* ─── AI DIAGNOSIS ─── */
+    #diagnosis { background: var(--dark-card); border-radius: 20px; padding: 56px 40px; max-width: 860px; margin: 0 auto 80px; border: 1px solid var(--dark-border); }
+
+    .step { display: none; }
+    .step.active { display: block; }
+
+    .attr-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 14px; margin-top: 24px;
+    }
+    .attr-btn {
+      background: var(--dark-bg);
+      border: 2px solid var(--dark-border);
+      border-radius: 12px;
+      padding: 20px 12px;
+      text-align: center;
+      cursor: pointer;
+      transition: all .2s;
+    }
+    .attr-btn:hover, .attr-btn.selected {
+      border-color: var(--gold);
+      background: rgba(255,215,0,.06);
+    }
+    .attr-btn .attr-emoji { font-size: 2rem; margin-bottom: 8px; }
+    .attr-btn .attr-label { font-size: .85rem; font-weight: 700; }
+    .attr-btn .attr-sub { font-size: .7rem; color: var(--text-sub); margin-top: 4px; }
+
+    .next-btn {
+      display: inline-block; margin-top: 32px;
+      background: linear-gradient(135deg, var(--gold), #e6b800);
+      color: #0D0D0D; font-weight: 900;
+      padding: 12px 36px; border-radius: 8px;
+      cursor: pointer; font-size: .95rem;
+      opacity: .4; pointer-events: none;
+      transition: opacity .2s, transform .15s;
+      border: none;
+    }
+    .next-btn.enabled { opacity: 1; pointer-events: all; }
+    .next-btn.enabled:hover { transform: translateY(-2px); }
+
+    /* result card */
+    .result-card {
+      border: 1px solid var(--gold-dim);
+      border-radius: 16px;
+      padding: 32px;
+      background: linear-gradient(135deg, rgba(255,215,0,.05) 0%, transparent 60%);
+      margin-top: 24px;
+    }
+    .result-title {
+      font-size: 1.3rem; font-weight: 900; margin-bottom: 8px;
+      color: var(--gold);
+    }
+    .result-desc { font-size: .9rem; color: var(--text-sub); margin-bottom: 24px; }
+    .broker-list { display: flex; flex-direction: column; gap: 14px; }
+    .broker-item {
+      display: flex; align-items: center; justify-content: space-between;
+      background: var(--dark-bg);
+      border: 1px solid var(--dark-border);
+      border-radius: 10px; padding: 16px 20px;
+      transition: border-color .2s;
+    }
+    .broker-item:hover { border-color: var(--gold-dim); }
+    .broker-rank {
+      font-size: .7rem; font-weight: 900; letter-spacing: .1em;
+      color: var(--gold); margin-right: 14px; min-width: 28px;
+    }
+    .broker-info { flex: 1; }
+    .broker-name { font-weight: 700; font-size: .95rem; }
+    .broker-reason { font-size: .75rem; color: var(--text-sub); margin-top: 2px; }
+    .broker-cta {
+      background: var(--gold);
+      color: #0D0D0D; font-weight: 900;
+      font-size: .78rem; padding: 8px 18px;
+      border-radius: 6px; white-space: nowrap;
+      transition: background .15s;
+    }
+    .broker-cta:hover { background: var(--gold-light); }
+
+    .retry-btn {
+      display: inline-block; margin-top: 24px;
+      border: 1px solid var(--dark-border);
+      color: var(--text-sub); padding: 10px 24px;
+      border-radius: 8px; cursor: pointer;
+      font-size: .85rem; background: none;
+      transition: border-color .2s, color .2s;
+    }
+    .retry-btn:hover { border-color: var(--gold-dim); color: var(--gold); }
+
+    /* ─── LATEST VIDEOS ─── */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .video-card {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 14px; overflow: hidden;
+      transition: transform .2s, border-color .2s;
+    }
+    .video-card:hover { transform: translateY(-4px); border-color: var(--gold-dim); }
+    .video-thumb {
+      width: 100%; aspect-ratio: 16/9;
+      background: linear-gradient(135deg, #1a1400 0%, #2a2000 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.5rem;
+    }
+    .video-body { padding: 16px; }
+    .video-cat { font-size: .68rem; color: var(--gold); letter-spacing: .1em; margin-bottom: 6px; }
+    .video-title { font-size: .88rem; font-weight: 700; line-height: 1.5; }
+    .video-meta { font-size: .72rem; color: var(--text-sub); margin-top: 8px; }
+
+    /* ─── SNS BAR ─── */
+    .sns-bar {
+      background: var(--dark-card);
+      border-top: 1px solid var(--dark-border);
+      border-bottom: 1px solid var(--dark-border);
+      padding: 32px 24px;
+      display: flex; justify-content: center; gap: 24px; flex-wrap: wrap;
+    }
+    .sns-link {
+      display: flex; align-items: center; gap: 10px;
+      border: 1px solid var(--dark-border);
+      border-radius: 10px; padding: 12px 22px;
+      font-size: .85rem; font-weight: 700;
+      transition: border-color .2s, color .2s;
+    }
+    .sns-link:hover { border-color: var(--gold-dim); color: var(--gold); }
+    .sns-icon { font-size: 1.3rem; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      text-align: center; padding: 40px 24px;
+      font-size: .75rem; color: var(--text-sub);
+      border-top: 1px solid var(--dark-border);
+    }
+    footer .footer-logo {
+      font-size: 1.2rem; font-weight: 900;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dim));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      margin-bottom: 12px;
+    }
+    footer p { margin-top: 6px; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 600px) {
+      #diagnosis { padding: 36px 20px; }
+      nav.header-nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header>
+  <div class="logo">楽っション <span>Rakussion</span></div>
+  <nav class="header-nav">
+    <a href="#categories">カテゴリ</a>
+    <a href="#diag-section">投資診断</a>
+    <a href="#videos">動画</a>
+    <a href="#sns">SNS</a>
+  </nav>
+</header>
+
+<!-- ===== HERO ===== -->
+<div class="hero">
+  <div class="hero-tag">AI × 投資情報メディア</div>
+  <h1>あなたの<em>投資スタイル</em>に<br>ぴったりの戦略を。</h1>
+  <p>新NISA・高配当・FX・不動産まで。毎日AIが最新情報を解説。まずは60秒の無料診断から。</p>
+  <a href="#diag-section" class="btn-primary">▶ 無料 投資診断を始める</a>
+</div>
+
+<!-- ===== CATEGORY NAV 6 ===== -->
+<section id="categories">
+  <div class="section-label">CATEGORIES</div>
+  <div class="section-title">6つの投資カテゴリ</div>
+  <div class="cat-grid">
+    <div class="cat-card">
+      <div class="cat-icon">🏦</div>
+      <div class="cat-name">新NISA</div>
+      <div class="cat-desc">非課税枠を最大活用</div>
+    </div>
+    <div class="cat-card">
+      <div class="cat-icon">💰</div>
+      <div class="cat-name">高配当株</div>
+      <div class="cat-desc">安定インカムを狙う</div>
+    </div>
+    <div class="cat-card">
+      <div class="cat-icon">📈</div>
+      <div class="cat-name">積立投資</div>
+      <div class="cat-desc">複利×ほったらかし</div>
+    </div>
+    <div class="cat-card">
+      <div class="cat-icon">🌍</div>
+      <div class="cat-name">海外FX</div>
+      <div class="cat-desc">ハイレバ短期戦略</div>
+    </div>
+    <div class="cat-card">
+      <div class="cat-icon">🏠</div>
+      <div class="cat-name">不動産投資</div>
+      <div class="cat-desc">節税×インフレ対策</div>
+    </div>
+    <div class="cat-card">
+      <div class="cat-icon">🔰</div>
+      <div class="cat-name">初心者入門</div>
+      <div class="cat-desc">投資の基礎から学ぶ</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== AI DIAGNOSIS ===== -->
+<section id="diag-section" style="padding-top:0;">
+  <div class="section-label">AI DIAGNOSIS</div>
+  <div class="section-title">AI 投資属性診断</div>
+
+  <div id="diagnosis">
+
+    <!-- STEP 1: 属性選択 -->
+    <div class="step active" id="step1">
+      <p style="color:var(--text-sub);margin-bottom:4px;font-size:.9rem;">あなたに一番近いのは？</p>
+      <p style="font-size:1.1rem;font-weight:700;">投資スタイルを選んでください</p>
+
+      <div class="attr-grid">
+        <div class="attr-btn" data-attr="senior" onclick="selectAttr(this)">
+          <div class="attr-emoji">👴</div>
+          <div class="attr-label">シニア</div>
+          <div class="attr-sub">50代後半〜<br>配当金・安定重視</div>
+        </div>
+        <div class="attr-btn" data-attr="middle" onclick="selectAttr(this)">
+          <div class="attr-emoji">💼</div>
+          <div class="attr-label">中年</div>
+          <div class="attr-sub">40〜50代前半<br>時短ほったらかし</div>
+        </div>
+        <div class="attr-btn" data-attr="young" onclick="selectAttr(this)">
+          <div class="attr-emoji">🌱</div>
+          <div class="attr-label">若者</div>
+          <div class="attr-sub">20〜30代<br>新NISA×複利</div>
+        </div>
+        <div class="attr-btn" data-attr="brave" onclick="selectAttr(this)">
+          <div class="attr-emoji">⚔️</div>
+          <div class="attr-label">勇者</div>
+          <div class="attr-sub">リスク許容MAX<br>FXハイレバ</div>
+        </div>
+        <div class="attr-btn" data-attr="realestate" onclick="selectAttr(this)">
+          <div class="attr-emoji">🏠</div>
+          <div class="attr-label">不動産</div>
+          <div class="attr-sub">節税・現物志向<br>インフレ対策</div>
+        </div>
+      </div>
+
+      <button class="next-btn" id="nextBtn" onclick="showResult()">診断結果を見る →</button>
+    </div>
+
+    <!-- STEP 2: 結果 -->
+    <div class="step" id="step2">
+      <div id="result-content"></div>
+      <button class="retry-btn" onclick="resetDiag()">← もう一度診断する</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== LATEST VIDEOS ===== -->
+<section id="videos">
+  <div class="section-label">LATEST VIDEOS</div>
+  <div class="section-title">最新の投資解説動画</div>
+  <div class="video-grid">
+    <div class="video-card">
+      <div class="video-thumb">📊</div>
+      <div class="video-body">
+        <div class="video-cat">新NISA</div>
+        <div class="video-title">2026年 新NISAで狙うべきオルカン vs S&P500【徹底比較】</div>
+        <div class="video-meta">3.2万回視聴 · 2日前</div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-thumb">💰</div>
+      <div class="video-body">
+        <div class="video-cat">高配当株</div>
+        <div class="video-title">配当利回り5%超え！おすすめ高配当株3選【2026年版】</div>
+        <div class="video-meta">2.8万回視聴 · 3日前</div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-thumb">🌍</div>
+      <div class="video-body">
+        <div class="video-cat">海外FX</div>
+        <div class="video-title">ドル円急落！ハイレバ民が生き残る損切りルールとは</div>
+        <div class="video-meta">4.1万回視聴 · 1日前</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SNS BAR ===== -->
+<div class="sns-bar" id="sns">
+  <a class="sns-link" href="https://youtube.com/@rakussion" target="_blank">
+    <span class="sns-icon">▶</span> YouTube @rakussion
+  </a>
+  <a class="sns-link" href="https://instagram.com/rakussion.invest" target="_blank">
+    <span class="sns-icon">📸</span> Instagram @rakussion.invest
+  </a>
+  <a class="sns-link" href="https://tiktok.com/@rakussion" target="_blank">
+    <span class="sns-icon">🎵</span> TikTok @rakussion
+  </a>
+  <a class="sns-link" href="https://x.com/rakussion_jp" target="_blank">
+    <span class="sns-icon">𝕏</span> X @rakussion_jp
+  </a>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-logo">楽っション</div>
+  <p>投資は自己責任です。当サイトの情報は投資助言ではありません。</p>
+  <p style="margin-top:4px;">© 2026 Rakussion. All rights reserved.</p>
+</footer>
+
+<!-- ===== SCRIPT ===== -->
+<script>
+  const RESULTS = {
+    senior: {
+      title: "👴 シニア向け：安定配当×守りの投資",
+      desc: "リスクを抑えながら配当収入で資産を育てるスタイル。国内高配当株・債券・REITの組み合わせが鉄板です。",
+      brokers: [
+        { rank: "1位", name: "SBI証券", reason: "国内外株・投信の取扱い最多。NISA口座数No.1", cta: "無料口座開設" },
+        { rank: "2位", name: "松井証券", reason: "50歳以上サポート充実。電話サポートが安心", cta: "詳しく見る" },
+        { rank: "3位", name: "楽天証券", reason: "楽天ポイントで投信購入可。使いやすいUI", cta: "詳しく見る" }
+      ]
+    },
+    middle: {
+      title: "💼 中年向け：時短ほったらかし投資",
+      desc: "忙しい40〜50代に最適。インデックス積立＋高配当ETFで手間ゼロで資産形成。",
+      brokers: [
+        { rank: "1位", name: "SBI証券", reason: "クレカ積立でポイント還元。三井住友カード連携", cta: "無料口座開設" },
+        { rank: "2位", name: "楽天証券", reason: "楽天カード積立で1%還元。楽天経済圏と相性◎", cta: "詳しく見る" },
+        { rank: "3位", name: "マネックス証券", reason: "dカード積立1.1%還元。外国株に強い", cta: "詳しく見る" }
+      ]
+    },
+    young: {
+      title: "🌱 若者向け：新NISA×複利の魔法",
+      desc: "20〜30代は時間が最大の武器。新NISA満額積立＋全世界株で30年後に億超えを目指せ。",
+      brokers: [
+        { rank: "1位", name: "SBI証券", reason: "eMAXIS Slim全世界株が買える。業界最低水準の手数料", cta: "無料口座開設" },
+        { rank: "2位", name: "楽天証券", reason: "アプリが使いやすい。楽天カード積立でポイントも貯まる", cta: "詳しく見る" },
+        { rank: "3位", name: "auカブコム証券", reason: "au PAYカード積立1%還元。Pontaポイント活用", cta: "詳しく見る" }
+      ]
+    },
+    brave: {
+      title: "⚔️ 勇者向け：海外FX×ハイレバ戦略",
+      desc: "リスク許容度が高く短期で大きく動かしたい方向け。資金管理と損切りルールが命です。",
+      brokers: [
+        { rank: "1位", name: "XM Trading", reason: "最大888倍レバレッジ。ボーナス制度が業界最大級", cta: "口座開設" },
+        { rank: "2位", name: "EXNESS", reason: "超低スプレッド。無制限レバレッジ対応", cta: "詳しく見る" },
+        { rank: "3位", name: "Titan FX", reason: "約定速度が速い。ECN方式で透明性高い", cta: "詳しく見る" }
+      ]
+    },
+    realestate: {
+      title: "🏠 不動産向け：節税×インフレ対策",
+      desc: "現物資産でインフレに強いポートフォリオを構築。節税効果も最大化。",
+      brokers: [
+        { rank: "1位", name: "SBI証券（REIT）", reason: "J-REIT・海外REITを少額から。分散投資に最適", cta: "無料口座開設" },
+        { rank: "2位", name: "楽天証券（REIT）", reason: "楽天REITインデックスファンドが低コスト", cta: "詳しく見る" },
+        { rank: "3位", name: "クラウドファンディング系", reason: "物件に直接出資。利回り3〜8%が目安", cta: "詳しく見る" }
+      ]
+    }
+  };
+
+  let selectedAttr = null;
+
+  function selectAttr(el) {
+    document.querySelectorAll('.attr-btn').forEach(b => b.classList.remove('selected'));
+    el.classList.add('selected');
+    selectedAttr = el.dataset.attr;
+    const btn = document.getElementById('nextBtn');
+    btn.classList.add('enabled');
+  }
+
+  function showResult() {
+    if (!selectedAttr) return;
+    const data = RESULTS[selectedAttr];
+    const brokersHTML = data.brokers.map(b => `
+      <div class="broker-item">
+        <div class="broker-rank">${b.rank}</div>
+        <div class="broker-info">
+          <div class="broker-name">${b.name}</div>
+          <div class="broker-reason">${b.reason}</div>
+        </div>
+        <span class="broker-cta">${b.cta}</span>
+      </div>
+    `).join('');
+
+    document.getElementById('result-content').innerHTML = `
+      <div class="result-card">
+        <div class="result-title">${data.title}</div>
+        <div class="result-desc">${data.desc}</div>
+        <div class="broker-list">${brokersHTML}</div>
+      </div>
+    `;
+
+    document.getElementById('step1').classList.remove('active');
+    document.getElementById('step2').classList.add('active');
+  }
+
+  function resetDiag() {
+    selectedAttr = null;
+    document.querySelectorAll('.attr-btn').forEach(b => b.classList.remove('selected'));
+    document.getElementById('nextBtn').classList.remove('enabled');
+    document.getElementById('step2').classList.remove('active');
+    document.getElementById('step1').classList.add('active');
+    document.getElementById('result-content').innerHTML = '';
+  }
+</script>
+
+</body>
+</html>
