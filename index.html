@@ -349,6 +349,147 @@
       .broker-card { flex-direction: column; align-items: flex-start; }
       .btn-cta-sub { margin-left: 0; margin-top: 12px; }
     }
+
+    /* ========== COMPOUND CALCULATOR ========== */
+    .calc-section {
+      background: var(--navy-card);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 72px 24px;
+    }
+    .calc-inner { max-width: 860px; margin: 0 auto; }
+    .calc-lead {
+      text-align: center; margin-bottom: 40px;
+    }
+    .calc-lead .calc-label {
+      font-size: .7rem; letter-spacing: .25em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 8px;
+    }
+    .calc-lead h2 {
+      font-size: clamp(1.4rem, 3.5vw, 2.1rem);
+      font-weight: 900; margin-bottom: 10px;
+    }
+    .calc-lead h2 .gold {
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .calc-lead p { font-size: .9rem; color: var(--text-sub); }
+
+    .calc-inputs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px; margin-bottom: 32px;
+    }
+    @media (max-width: 560px) { .calc-inputs { grid-template-columns: 1fr; } }
+
+    .calc-field label {
+      display: block; font-size: .75rem; font-weight: 700;
+      color: var(--gold-light); margin-bottom: 8px; letter-spacing: .05em;
+    }
+    .calc-field .input-wrap {
+      position: relative;
+    }
+    .calc-field input[type="number"] {
+      width: 100%; padding: 14px 50px 14px 16px;
+      background: var(--navy-mid);
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      color: var(--text); font-size: 1.1rem; font-weight: 700;
+      font-family: 'Noto Sans JP', sans-serif;
+      outline: none; transition: border-color .2s;
+      -moz-appearance: textfield;
+    }
+    .calc-field input[type="number"]::-webkit-outer-spin-button,
+    .calc-field input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; }
+    .calc-field input[type="number"]:focus { border-color: var(--gold); }
+    .calc-field .unit {
+      position: absolute; right: 14px; top: 50%;
+      transform: translateY(-50%);
+      font-size: .8rem; color: var(--text-sub); font-weight: 700;
+      pointer-events: none;
+    }
+
+    .rate-presets {
+      display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px;
+    }
+    .rate-btn {
+      background: var(--navy-mid); border: 1px solid var(--border);
+      border-radius: 6px; padding: 5px 14px;
+      font-size: .78rem; font-weight: 700; color: var(--text-sub);
+      cursor: pointer; transition: all .15s;
+    }
+    .rate-btn:hover, .rate-btn.active {
+      border-color: var(--gold); color: var(--gold);
+      background: rgba(212,175,55,.08);
+    }
+
+    .calc-results {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px; margin-bottom: 28px;
+    }
+    @media (max-width: 560px) { .calc-results { grid-template-columns: repeat(2, 1fr); } }
+
+    .result-card {
+      background: var(--navy-mid);
+      border: 1px solid var(--border);
+      border-radius: 14px; padding: 20px 14px;
+      text-align: center;
+      transition: border-color .3s, transform .3s;
+    }
+    .result-card.highlight {
+      border-color: var(--gold);
+      background: linear-gradient(135deg, rgba(212,175,55,.08) 0%, var(--navy-mid) 60%);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(212,175,55,.18);
+    }
+    .result-year {
+      font-size: .7rem; color: var(--text-sub);
+      letter-spacing: .1em; margin-bottom: 8px;
+    }
+    .result-amount {
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      font-weight: 900; color: var(--gold-light);
+      line-height: 1.2; margin-bottom: 4px;
+      transition: all .4s;
+    }
+    .result-gain {
+      font-size: .72rem; color: #50C878; font-weight: 700;
+    }
+    .result-x {
+      font-size: .68rem; color: var(--text-sub); margin-top: 4px;
+    }
+
+    .calc-bar-area { margin-top: 8px; }
+    .calc-bar-row {
+      display: flex; align-items: center; gap: 12px; margin-bottom: 10px;
+    }
+    .calc-bar-lbl {
+      min-width: 52px; font-size: .75rem; color: var(--text-sub); text-align: right;
+    }
+    .calc-bar-track {
+      flex: 1; height: 28px; background: var(--navy-mid);
+      border-radius: 6px; overflow: hidden;
+    }
+    .calc-bar-fill {
+      height: 100%; border-radius: 6px;
+      background: linear-gradient(90deg, var(--gold-dim), var(--gold));
+      display: flex; align-items: center; justify-content: flex-end;
+      padding-right: 10px;
+      font-size: .72rem; font-weight: 700; color: var(--navy);
+      transition: width .6s cubic-bezier(.4,0,.2,1);
+      min-width: 0;
+    }
+    .calc-message {
+      text-align: center;
+      background: linear-gradient(135deg, rgba(212,175,55,.06) 0%, transparent 60%);
+      border: 1px solid rgba(212,175,55,.2);
+      border-radius: 12px; padding: 20px 24px;
+      margin-top: 20px;
+      font-size: .9rem; line-height: 1.8;
+      color: var(--text-sub);
+    }
+    .calc-message strong { color: var(--gold-light); }
   </style>
 </head>
 <body>
@@ -399,6 +540,76 @@
     <div class="scroll-hint" id="scrollHint">▼ スクロールして詳細を確認</div>
   </div>
 </section>
+
+
+<!-- ================================================================ COMPOUND CALCULATOR ================================================================ -->
+<div class="calc-section" id="calculator">
+  <div class="calc-inner">
+
+    <div class="calc-lead">
+      <div class="calc-label">Compound Interest</div>
+      <h2>複利は<span class="gold">人類最大の発明</span>だ。</h2>
+      <p>元本を入れるだけ。時間が勝手に資産を増やしていく。その威力を今すぐ確かめろ。</p>
+    </div>
+
+    <div class="calc-inputs">
+      <div class="calc-field">
+        <label>元本（最初に投資する金額）</label>
+        <div class="input-wrap">
+          <input type="number" id="calcPrincipal" value="100" min="1" max="100000" />
+          <span class="unit">万円</span>
+        </div>
+      </div>
+      <div class="calc-field">
+        <label>年利（想定リターン）</label>
+        <div class="input-wrap">
+          <input type="number" id="calcRate" value="5" min="0.1" max="50" step="0.1" />
+          <span class="unit">%</span>
+        </div>
+        <div class="rate-presets">
+          <button class="rate-btn" onclick="setRate(3)">3%</button>
+          <button class="rate-btn active" onclick="setRate(5)">5%</button>
+          <button class="rate-btn" onclick="setRate(7)">7%</button>
+          <button class="rate-btn" onclick="setRate(10)">10%</button>
+          <button class="rate-btn" onclick="setRate(15)">15%</button>
+          <button class="rate-btn" onclick="setRate(20)">20%</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="calc-results">
+      <div class="result-card" id="res1">
+        <div class="result-year">1年後</div>
+        <div class="result-amount" id="amt1">—</div>
+        <div class="result-gain" id="gain1"></div>
+        <div class="result-x" id="x1"></div>
+      </div>
+      <div class="result-card" id="res5">
+        <div class="result-year">5年後</div>
+        <div class="result-amount" id="amt5">—</div>
+        <div class="result-gain" id="gain5"></div>
+        <div class="result-x" id="x5"></div>
+      </div>
+      <div class="result-card highlight" id="res10">
+        <div class="result-year">10年後 ⭐</div>
+        <div class="result-amount" id="amt10">—</div>
+        <div class="result-gain" id="gain10"></div>
+        <div class="result-x" id="x10"></div>
+      </div>
+      <div class="result-card" id="res20">
+        <div class="result-year">20年後</div>
+        <div class="result-amount" id="amt20">—</div>
+        <div class="result-gain" id="gain20"></div>
+        <div class="result-x" id="x20"></div>
+      </div>
+    </div>
+
+    <div class="calc-bar-area" id="calcBars"></div>
+
+    <div class="calc-message" id="calcMessage"></div>
+
+  </div>
+</div>
 
 
 <!-- ================================================================ SENIOR ================================================================ -->
@@ -1093,6 +1304,70 @@
 </footer>
 
 <script>
+  /* ===== COMPOUND CALCULATOR ===== */
+  function fmt(man) {
+    if (man >= 10000) return (man / 10000).toFixed(1).replace(/\.0$/, '') + '億円';
+    if (man >= 1)     return man.toFixed(1).replace(/\.0$/, '') + '万円';
+    return Math.round(man * 10000).toLocaleString() + '円';
+  }
+
+  function calcCompound() {
+    const p    = parseFloat(document.getElementById('calcPrincipal').value) || 100;
+    const r    = parseFloat(document.getElementById('calcRate').value) / 100 || 0.05;
+    const years = [1, 5, 10, 20];
+    const vals  = years.map(y => p * Math.pow(1 + r, y));
+    const max   = vals[3];
+
+    years.forEach((y, i) => {
+      const v    = vals[i];
+      const gain = v - p;
+      const x    = (v / p).toFixed(2);
+      document.getElementById('amt' + y).textContent  = fmt(v);
+      document.getElementById('gain' + y).textContent = '+' + fmt(gain);
+      document.getElementById('x' + y).textContent    = x + '倍';
+    });
+
+    // バーチャート
+    const barsEl = document.getElementById('calcBars');
+    barsEl.innerHTML = years.map((y, i) => {
+      const pct = Math.round((vals[i] / max) * 100);
+      const label = y + '年後';
+      return `<div class="calc-bar-row">
+        <div class="calc-bar-lbl">${label}</div>
+        <div class="calc-bar-track">
+          <div class="calc-bar-fill" style="width:${pct}%">${fmt(vals[i])}</div>
+        </div>
+      </div>`;
+    }).join('');
+
+    // メッセージ
+    const x20   = (vals[3] / p).toFixed(1);
+    const gain20 = fmt(vals[3] - p);
+    const rate   = Math.round(r * 100);
+    const msgEl  = document.getElementById('calcMessage');
+    msgEl.innerHTML = `年利 <strong>${rate}%</strong> で放置するだけで、<strong>${p}万円</strong>が20年後に <strong>${fmt(vals[3])}</strong> になる。<br>
+元本はそのまま。増えた分は <strong>+${gain20}</strong>。これが複利の魔法だ。<br>
+<span style="font-size:.8rem;color:var(--text-sub)">※税金・手数料は考慮外。投資は元本割れリスクがあります。</span>`;
+  }
+
+  function setRate(v) {
+    document.getElementById('calcRate').value = v;
+    document.querySelectorAll('.rate-btn').forEach(b => {
+      b.classList.toggle('active', parseFloat(b.textContent) === v);
+    });
+    calcCompound();
+  }
+
+  document.getElementById('calcPrincipal').addEventListener('input', calcCompound);
+  document.getElementById('calcRate').addEventListener('input', function() {
+    document.querySelectorAll('.rate-btn').forEach(b => b.classList.remove('active'));
+    calcCompound();
+  });
+
+  // 初期計算
+  calcCompound();
+
+  /* ===== ATTR SWITCH ===== */
   function switchAttr(btn) {
     document.querySelectorAll('.attr-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
