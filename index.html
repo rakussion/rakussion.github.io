@@ -516,6 +516,71 @@
       color: var(--text-sub);
     }
     .calc-message strong { color: var(--gold-light); }
+
+    /* ========== TSUMITATE CALCULATOR ========== */
+    .tsumitate-section {
+      background: var(--navy);
+      border-bottom: 1px solid var(--border);
+      padding: 72px 24px;
+    }
+    .tsumitate-section .calc-label { color: #50C878 !important; }
+    .tsumitate-section .calc-lead h2 .green {
+      background: linear-gradient(90deg, #50C878, #98FB98);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .tsumitate-section .calc-inputs { grid-template-columns: 1fr 1fr 1fr; }
+    @media (max-width: 700px) { .tsumitate-section .calc-inputs { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 420px) { .tsumitate-section .calc-inputs { grid-template-columns: 1fr; } }
+    .tsumitate-section .calc-field label { color: #98FB98; }
+    .tsumitate-section .calc-field input[type="number"]:focus { border-color: #50C878; }
+    .tsumitate-section .rate-btn:hover,
+    .tsumitate-section .rate-btn.active {
+      border-color: #50C878; color: #50C878;
+      background: rgba(80,200,120,.1);
+    }
+    .tsumitate-section .result-amount { color: #98FB98 !important; }
+    .tsumitate-section .result-card.highlight {
+      border-color: #50C878;
+      background: linear-gradient(135deg, rgba(80,200,120,.08) 0%, var(--navy-mid) 60%);
+      box-shadow: 0 8px 32px rgba(80,200,120,.18);
+    }
+    .tsumitate-section .calc-bar-fill {
+      background: linear-gradient(90deg, #1f6b3b, #50C878) !important;
+      color: #071a0f !important;
+    }
+    .tsumitate-section .calc-message {
+      background: linear-gradient(135deg, rgba(80,200,120,.06) 0%, transparent 60%);
+      border-color: rgba(80,200,120,.25);
+    }
+    .tsumitate-section .calc-message strong { color: #98FB98 !important; }
+
+    .tsumi-breakdown {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 12px; margin-bottom: 24px;
+    }
+    @media (max-width: 560px) { .tsumi-breakdown { grid-template-columns: 1fr; } }
+    .tsumi-bd-item {
+      background: var(--navy-mid); border: 1px solid var(--border);
+      border-radius: 12px; padding: 18px 14px; text-align: center;
+    }
+    .tsumi-bd-item.profit { border-color: rgba(80,200,120,.35); }
+    .tsumi-bd-label { font-size: .68rem; color: var(--text-sub); letter-spacing: .08em; margin-bottom: 8px; }
+    .tsumi-bd-value { font-size: 1.15rem; font-weight: 900; }
+    .tsumi-bd-value.green { color: #98FB98; }
+    .tsumi-bd-value.gold  { color: var(--gold-light); }
+
+    .tsumi-stack-bar {
+      height: 20px; border-radius: 999px; overflow: hidden;
+      display: flex; margin-bottom: 28px;
+    }
+    .tsumi-stack-principal { background: var(--navy-mid); border: 1px solid var(--border); border-radius: 999px 0 0 999px; }
+    .tsumi-stack-profit    { background: linear-gradient(90deg,#1f6b3b,#50C878); border-radius: 0 999px 999px 0; }
+    .tsumi-stack-legend {
+      display: flex; gap: 20px; justify-content: center; margin-bottom: 28px; font-size: .72rem; color: var(--text-sub);
+    }
+    .tsumi-stack-legend span::before { content: '●'; margin-right: 4px; }
+    .tsumi-stack-legend .lg-principal span::before { color: var(--border); }
+    .tsumi-stack-legend .lg-profit    span::before { color: #50C878; }
   </style>
 </head>
 <body>
@@ -642,6 +707,79 @@
     <div class="calc-bar-area" id="calcBars"></div>
 
     <div class="calc-message" id="calcMessage"></div>
+
+  </div>
+</div>
+
+
+<!-- ================================================================ TSUMITATE CALCULATOR ================================================================ -->
+<div class="tsumitate-section" id="tsumitate">
+  <div class="calc-inner">
+
+    <div class="calc-lead">
+      <div class="calc-label">Monthly DCA Compound</div>
+      <h2>毎月コツコツが、<span class="green">億を生む。</span></h2>
+      <p>毎月いくら積み立てるか入れるだけ。30年後の「あなたの未来」が今すぐ見える。</p>
+    </div>
+
+    <div class="calc-inputs tsumitate-section">
+      <div class="calc-field">
+        <label>毎月の積立額</label>
+        <div class="input-wrap">
+          <input type="number" id="tsumiAmt" value="3" min="0.1" max="1000" step="0.5" />
+          <span class="unit">万円</span>
+        </div>
+        <div class="rate-presets">
+          <button class="rate-btn" onclick="setTsumiAmt(1)">1万</button>
+          <button class="rate-btn" onclick="setTsumiAmt(3)">3万</button>
+          <button class="rate-btn active" onclick="setTsumiAmt(5)">5万</button>
+          <button class="rate-btn" onclick="setTsumiAmt(10)">10万</button>
+        </div>
+      </div>
+      <div class="calc-field">
+        <label>年利（想定リターン）</label>
+        <div class="input-wrap">
+          <input type="number" id="tsumiRate" value="5" min="0.1" max="50" step="0.1" />
+          <span class="unit">%</span>
+        </div>
+        <div class="rate-presets">
+          <button class="rate-btn" onclick="setTsumiRate(3)">3%</button>
+          <button class="rate-btn active" onclick="setTsumiRate(5)">5%</button>
+          <button class="rate-btn" onclick="setTsumiRate(7)">7%</button>
+          <button class="rate-btn" onclick="setTsumiRate(10)">10%</button>
+        </div>
+      </div>
+      <div class="calc-field">
+        <label>積立期間</label>
+        <div class="input-wrap">
+          <input type="number" id="tsumiYears" value="30" min="1" max="50" />
+          <span class="unit">年</span>
+        </div>
+        <div class="rate-presets">
+          <button class="rate-btn" onclick="setTsumiYears(10)">10年</button>
+          <button class="rate-btn" onclick="setTsumiYears(20)">20年</button>
+          <button class="rate-btn active" onclick="setTsumiYears(30)">30年</button>
+          <button class="rate-btn" onclick="setTsumiYears(40)">40年</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="calc-results" id="tsumiCards"></div>
+
+    <div class="tsumi-breakdown" id="tsumiBreakdown"></div>
+
+    <div class="tsumi-stack-bar" id="tsumiStackBar">
+      <div class="tsumi-stack-principal" id="tsumiStackP"></div>
+      <div class="tsumi-stack-profit"    id="tsumiStackG"></div>
+    </div>
+    <div class="tsumi-stack-legend">
+      <span class="lg-principal"><span>積立元本</span></span>
+      <span class="lg-profit"><span>複利利益</span></span>
+    </div>
+
+    <div class="calc-bar-area" id="tsumiBars"></div>
+
+    <div class="calc-message" id="tsumiMessage"></div>
 
   </div>
 </div>
@@ -1413,6 +1551,129 @@
 
   // 初期計算
   calcCompound();
+
+  /* ===== TSUMITATE (積立複利) CALCULATOR ===== */
+  function fvAnnuity(monthlyPayment, annualRate, numYears) {
+    const rm = annualRate / 12;
+    const n  = numYears * 12;
+    if (rm === 0) return monthlyPayment * n;
+    return monthlyPayment * (Math.pow(1 + rm, n) - 1) / rm;
+  }
+
+  function calcTsumitate() {
+    const monthly = parseFloat(document.getElementById('tsumiAmt').value)   || 3;
+    const r       = parseFloat(document.getElementById('tsumiRate').value)  / 100 || 0.05;
+    const period  = parseInt(document.getElementById('tsumiYears').value)   || 30;
+
+    // 表示する節目: period に合わせて自動選択
+    const milestones = [10, 20, 30, 40].filter(y => y <= period);
+    if (!milestones.includes(period)) milestones.push(period);
+    milestones.sort((a, b) => a - b);
+    // 最大4枚
+    let display = milestones.slice(-4);
+    while (display.length < 4) display.unshift(null); // null = 空カード
+
+    const fvs   = display.map(y => y ? fvAnnuity(monthly, r, y) : null);
+    const maxFv = Math.max(...fvs.filter(Boolean));
+
+    // ── 結果カード ──
+    const cardsEl = document.getElementById('tsumiCards');
+    cardsEl.innerHTML = display.map((y, i) => {
+      if (!y) return `<div class="result-card" style="opacity:.2;"><div class="result-year">—</div></div>`;
+      const fv       = fvs[i];
+      const principal = monthly * y * 12;
+      const profit    = fv - principal;
+      const isHL      = (y === period);
+      return `<div class="result-card${isHL ? ' highlight' : ''}">
+        <div class="result-year">${y}年後${isHL ? ' ⭐' : ''}</div>
+        <div class="result-amount" style="color:#98FB98">${fmt(fv)}</div>
+        <div class="result-gain">+${fmt(profit)}</div>
+        <div class="result-x">${(fv / principal).toFixed(2)}倍</div>
+      </div>`;
+    }).join('');
+
+    // ── 内訳カード ──
+    const finalFv        = fvAnnuity(monthly, r, period);
+    const finalPrincipal = monthly * period * 12;
+    const finalProfit    = finalFv - finalPrincipal;
+    document.getElementById('tsumiBreakdown').innerHTML = `
+      <div class="tsumi-bd-item">
+        <div class="tsumi-bd-label">💴 総積立元本</div>
+        <div class="tsumi-bd-value gold">${fmt(finalPrincipal)}</div>
+      </div>
+      <div class="tsumi-bd-item profit">
+        <div class="tsumi-bd-label">📈 複利で増えた利益</div>
+        <div class="tsumi-bd-value green">+${fmt(finalProfit)}</div>
+      </div>
+      <div class="tsumi-bd-item">
+        <div class="tsumi-bd-label">🏆 最終資産</div>
+        <div class="tsumi-bd-value green">${fmt(finalFv)}</div>
+      </div>`;
+
+    // ── 積み上げバー ──
+    const profitPct = Math.round((finalProfit / finalFv) * 100);
+    document.getElementById('tsumiStackP').style.width = (100 - profitPct) + '%';
+    document.getElementById('tsumiStackG').style.width = profitPct + '%';
+
+    // ── バーチャート ──
+    const barYears = milestones.slice(-4);
+    const barFvs   = barYears.map(y => fvAnnuity(monthly, r, y));
+    const barMax   = Math.max(...barFvs);
+    document.getElementById('tsumiBars').innerHTML = barYears.map((y, i) => {
+      const pct = Math.round((barFvs[i] / barMax) * 100);
+      return `<div class="calc-bar-row">
+        <div class="calc-bar-lbl">${y}年後</div>
+        <div class="calc-bar-track">
+          <div class="calc-bar-fill tsumitate-section" style="width:${pct}%;background:linear-gradient(90deg,#1f6b3b,#50C878);color:#071a0f;">${fmt(barFvs[i])}</div>
+        </div>
+      </div>`;
+    }).join('');
+
+    // ── 煽りメッセージ ──
+    const rate = Math.round(r * 100);
+    const mult = (finalFv / finalPrincipal).toFixed(1);
+    document.getElementById('tsumiMessage').innerHTML =
+      `毎月 <strong>${monthly}万円</strong> を年利 <strong>${rate}%</strong> で積み立てると、${period}年後に <strong>${fmt(finalFv)}</strong> になる。<br>
+あなたが実際に出した金額は <strong>${fmt(finalPrincipal)}</strong>。でも手元には <strong>${fmt(finalFv)}</strong> ある。<br>
+差額 <strong>+${fmt(finalProfit)}</strong> は、時間とお金が勝手に稼いでくれた分だ。これが積立複利の正体。<br>
+<span style="font-size:.8rem;color:var(--text-sub)">※税金・手数料は考慮外。投資は元本割れリスクがあります。</span>`;
+  }
+
+  function setTsumiAmt(v) {
+    document.getElementById('tsumiAmt').value = v;
+    document.querySelectorAll('#tsumitate .calc-inputs .calc-field:nth-child(1) .rate-btn').forEach(b => {
+      const n = parseFloat(b.textContent);
+      b.classList.toggle('active', n === v);
+    });
+    calcTsumitate();
+  }
+  function setTsumiRate(v) {
+    document.getElementById('tsumiRate').value = v;
+    document.querySelectorAll('#tsumitate .calc-inputs .calc-field:nth-child(2) .rate-btn').forEach(b => {
+      b.classList.toggle('active', parseFloat(b.textContent) === v);
+    });
+    calcTsumitate();
+  }
+  function setTsumiYears(v) {
+    document.getElementById('tsumiYears').value = v;
+    document.querySelectorAll('#tsumitate .calc-inputs .calc-field:nth-child(3) .rate-btn').forEach(b => {
+      b.classList.toggle('active', parseInt(b.textContent) === v);
+    });
+    calcTsumitate();
+  }
+
+  document.getElementById('tsumiAmt').addEventListener('input', calcTsumitate);
+  document.getElementById('tsumiRate').addEventListener('input', function() {
+    document.querySelectorAll('#tsumitate .calc-inputs .calc-field:nth-child(2) .rate-btn').forEach(b => b.classList.remove('active'));
+    calcTsumitate();
+  });
+  document.getElementById('tsumiYears').addEventListener('input', function() {
+    document.querySelectorAll('#tsumitate .calc-inputs .calc-field:nth-child(3) .rate-btn').forEach(b => b.classList.remove('active'));
+    calcTsumitate();
+  });
+
+  // 初期積立計算
+  calcTsumitate();
 
   /* ===== ATTR SWITCH ===== */
   function switchAttr(btn) {
