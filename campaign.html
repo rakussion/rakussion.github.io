@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HFYWR2KLBP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-HFYWR2KLBP');
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>特ダネ・キャンペーン情報｜楽っション（Rakussion）</title>
+  <meta name="description" content="証券会社・FX業者の最新キャンペーン情報をまとめてお届け。口座開設ボーナス・入金特典・株プレゼントなど今だけの特典を見逃さない。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy:       #0A0F1E;
+      --navy-card:  #111827;
+      --navy-mid:   #1C2840;
+      --border:     #1E2D4A;
+      --gold:       #D4AF37;
+      --gold-light: #F0D060;
+      --gold-dim:   #9A7E20;
+      --text:       #E8ECF4;
+      --text-sub:   #8B9DC3;
+      --red:        #E05555;
+      --red-light:  #ff6b6b;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Noto Sans JP', sans-serif; background: var(--navy); color: var(--text); line-height: 1.7; }
+    a { color: inherit; text-decoration: none; }
+
+    /* HEADER */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(10,15,30,.95); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      height: 60px; display: flex; align-items: center;
+      padding: 0 28px; justify-content: space-between;
+    }
+    .logo {
+      font-size: 1.2rem; font-weight: 900;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .back-btn {
+      font-size: .8rem; color: var(--text-sub);
+      border: 1px solid var(--border); border-radius: 6px;
+      padding: 6px 16px; transition: all .2s;
+    }
+    .back-btn:hover { color: var(--gold); border-color: var(--gold-dim); }
+
+    /* HERO */
+    .hero {
+      text-align: center; padding: 64px 24px 48px;
+      background: radial-gradient(ellipse 100% 60% at 50% 0%, #2a1020 0%, transparent 65%), var(--navy);
+    }
+    .hero-badge {
+      display: inline-block; border: 1px solid var(--red);
+      color: var(--red-light); font-size: .68rem; letter-spacing: .2em;
+      padding: 4px 16px; border-radius: 999px;
+      background: rgba(224,85,85,.1); margin-bottom: 20px;
+    }
+    .hero h1 { font-size: clamp(1.6rem, 4vw, 2.6rem); font-weight: 900; margin-bottom: 12px; }
+    .hero h1 .red {
+      background: linear-gradient(90deg, var(--red), var(--red-light));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero p { font-size: .9rem; color: var(--text-sub); max-width: 520px; margin: 0 auto; }
+
+    /* SECTION */
+    .section-wrap { max-width: 860px; margin: 0 auto; padding: 48px 24px; }
+    .section-label { font-size: .68rem; letter-spacing: .25em; color: var(--red-light); margin-bottom: 6px; }
+    .section-title { font-size: 1.1rem; font-weight: 900; margin-bottom: 32px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
+
+    /* CAMPAIGN CARDS */
+    .campaign-grid { display: grid; gap: 32px; }
+
+    .campaign-card {
+      background: var(--navy-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .campaign-card:hover {
+      border-color: var(--red);
+      box-shadow: 0 0 24px rgba(224,85,85,.15);
+    }
+    .campaign-card.featured {
+      border-color: var(--red);
+      box-shadow: 0 0 32px rgba(224,85,85,.2);
+    }
+
+    .campaign-header {
+      background: linear-gradient(135deg, #2a0a0a, #1a1020);
+      padding: 20px 24px 16px;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+    }
+    .campaign-name { font-size: 1.1rem; font-weight: 900; }
+    .campaign-badge {
+      font-size: .65rem; font-weight: 700; letter-spacing: .1em;
+      padding: 3px 12px; border-radius: 999px;
+      background: var(--red); color: #fff;
+    }
+    .campaign-period {
+      font-size: .72rem; color: var(--text-sub); margin-left: auto;
+    }
+
+    /* バナーエリア */
+    .banner-area {
+      padding: 24px;
+      display: flex; justify-content: center;
+      background: #0d0d0d;
+    }
+    .banner-area a img {
+      max-width: 100%; height: auto; border-radius: 8px;
+      display: block;
+    }
+
+    /* キャンペーン詳細 */
+    .campaign-body { padding: 24px; }
+    .campaign-points {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;
+    }
+    .cp {
+      font-size: .75rem; font-weight: 700;
+      background: rgba(224,85,85,.12);
+      border: 1px solid rgba(224,85,85,.3);
+      color: var(--red-light);
+      padding: 4px 14px; border-radius: 999px;
+    }
+    .campaign-desc {
+      font-size: .85rem; color: var(--text-sub); line-height: 1.8;
+      margin-bottom: 20px;
+    }
+    .btn-campaign {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: linear-gradient(135deg, var(--red), #c0392b);
+      color: #fff; font-size: .9rem; font-weight: 900;
+      padding: 14px 32px; border-radius: 999px;
+      transition: opacity .2s; letter-spacing: .04em;
+      width: 100%; justify-content: center;
+    }
+    .btn-campaign:hover { opacity: .85; }
+
+    /* DISCLAIMER */
+    .disclaimer {
+      max-width: 860px; margin: 0 auto 48px;
+      padding: 20px 24px;
+      font-size: .72rem; color: var(--text-sub);
+      border: 1px solid var(--border); border-radius: 8px;
+      line-height: 1.8;
+    }
+
+    footer {
+      text-align: center; padding: 32px 24px;
+      border-top: 1px solid var(--border);
+      font-size: .75rem; color: var(--text-sub);
+    }
+    .f-logo {
+      font-size: .9rem; font-weight: 900; margin-bottom: 6px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">楽っション</div>
+  <a href="index.html" class="back-btn">← トップへ戻る</a>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">🎁 Campaign Info</div>
+  <h1>今だけの<span class="red">特ダネ</span>・キャンペーン</h1>
+  <p>口座開設ボーナス・入金特典・株プレゼントなど、期間限定の美味しい情報をまとめてお届け。見逃し厳禁！</p>
+</div>
+
+<!-- CAMPAIGNS -->
+<div class="section-wrap">
+  <div class="section-label">CAMPAIGN</div>
+  <div class="section-title">🔥 開催中キャンペーン</div>
+
+  <div class="campaign-grid">
+
+    <!-- moomoo証券 -->
+    <div class="campaign-card featured">
+      <div class="campaign-header">
+        <div class="campaign-name">moomoo証券</div>
+        <span class="campaign-badge">🔥 開催中</span>
+        <div class="campaign-period">※予告なく終了する場合あり</div>
+      </div>
+
+      <!-- バナー -->
+      <div class="banner-area">
+        <a href="https://h.accesstrade.net/sp/cc?rk=0100pnl100py7" rel="nofollow" referrerpolicy="no-referrer-when-downgrade" target="_blank">
+          <img src="https://h.accesstrade.net/sp/rr?rk=0100pnl100py7" alt="moomoo証券【WEB】" border="0" width="1080" height="1080">
+        </a>
+      </div>
+
+      <div class="campaign-body">
+        <div class="campaign-points">
+          <span class="cp">🎁 最大10万円相当の株が当たる</span>
+          <span class="cp">5万円入金→抽選券1枚</span>
+          <span class="cp">30万円入金→抽選券3枚</span>
+          <span class="cp">100万円入金→抽選券6枚</span>
+          <span class="cp">米国株手数料1ヶ月無料</span>
+        </div>
+        <div class="campaign-desc">
+          新規口座開設＋入金で人気株の買付代金（最大10万円相当）がもれなく当たる！<br>
+          さらに口座開設完了で米国株取引手数料が1ヶ月間無料に。<br><br>
+          ▼ moomoo証券が選ばれる理由<br>
+          ・大口投資家の売買動向をグラフで確認できる<br>
+          ・バフェット氏の最新ポートフォリオが見放題<br>
+          ・空売りデータ・チャートパターン予測が無料<br>
+          ・日本株・米国株・NISA全商品の取引手数料0円<br>
+          ・業界初の米国株24時間取引対応
+        </div>
+        <a href="https://h.accesstrade.net/sp/cc?rk=0100pnl100py7" rel="nofollow" referrerpolicy="no-referrer-when-downgrade" target="_blank" class="btn-campaign">
+          🎁 今すぐ無料口座開設（特典あり）
+        </a>
+      </div>
+    </div>
+
+    <!-- 今後追加予定 -->
+    <div class="campaign-card" style="border-style:dashed;opacity:.5;">
+      <div class="campaign-body" style="text-align:center;padding:40px;">
+        <div style="font-size:2rem;margin-bottom:12px;">＋</div>
+        <div style="font-size:.9rem;color:var(--text-sub);">順次キャンペーン情報を追加予定</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- DISCLAIMER -->
+<div class="disclaimer">
+  ※当ページはアフィリエイト広告を含みます。キャンペーン内容・条件は予告なく変更・終了する場合があります。最新情報は必ず各社公式サイトでご確認ください。掲載内容は投資助言ではありません。投資は必ず自己判断・自己責任でお願いします。
+</div>
+
+<footer>
+  <div class="f-logo">楽っション（Rakussion）</div>
+  <p>© 2026 Rakussion. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
